@@ -43,13 +43,13 @@ const routes = [
     {
         path: '/book/:bookid/chapter/',
         name: 'DetailBook',
-        meta: { login: true, rdy : true },
+        meta: { login: true, rdy : true},
         component: DetailBook
     },
     {
         path: '/book/:bookid/chapter/:chapterid',
         name: 'DetailChapter',
-        meta: { login: true , rdy : true},
+        meta: { login: true , rdy : true,},
         component: DetailChapter
     },
     {
@@ -99,8 +99,9 @@ router.beforeEach((to, from, next) => {
         if (to.meta.notrdy && notready && !isAdmin) {
             next({ path: '/package' })
           }
-          if (to.meta.rdy && rdy) {
+          if (to.meta.rdy && !rdy) {
             next({ path: '/' })
+            console.log(rdy)
           }
         
 
